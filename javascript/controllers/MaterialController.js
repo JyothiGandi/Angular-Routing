@@ -26,6 +26,6 @@ angular.module('Material',[])
         ];
     }])
 
-.controller('MaterialDetailCtrl',['$scope','$routeParams',function($scope,$routeParams){
-        $scope.materialId = $routeParams.materialId;
+.controller('MaterialDetailCtrl',['$scope','$stateParams',function($scope,$stateParams){
+        $scope.materialId = $stateParams.materialId;
     }])

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <script src="assets/js/angular.min.js"></script>
-    <script src="assets/js/angular-route.js"></script>
+    <script src="assets/js/angular-ui-router.min.js"></script>
+    <!--<script src="assets/js/angular-route.js"></script>-->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+
 
     <script type="text/javascript" src="javascript/app.js"></script>
     <script type="text/javascript" src="javascript/route.js"></script>
@@ -26,15 +28,16 @@
         <div class="col-md-2">
             <section ng-controller="PanelController as panel">
             <ul class="nav nav-pills nav-stacked">
-                <li ng-class="{active : panel.isTabSelected(1)}"><a href="#/equipments" ng-click="panel.setTab(1)">Equipments</a></li>
-                <li ng-class="{active : panel.isTabSelected(2)}"><a href="#/materials" ng-click="panel.setTab(2)">Materials</a></li>
-                <li ng-class="{active : panel.isTabSelected(3)}"><a href="#/locations" ng-click="panel.setTab(3)">Locations</a></li>
-                <li ng-class="{active : panel.isTabSelected(4)}"><a href="#/users" ng-click="panel.setTab(4)">Users</a></li>
+                <li ng-class="{active : panel.isTabSelected(1)}"><!--href="#/equipments"--><a ui-sref="equipmentsList" ng-click="panel.setTab(1)">Equipments</a></li>
+                <li ng-class="{active : panel.isTabSelected(2)}"><a ui-sref="materialsList" ng-click="panel.setTab(2)">Materials</a></li>
+                <li ng-class="{active : panel.isTabSelected(3)}"><a ui-sref="locationsList" ng-click="panel.setTab(3)">Locations</a></li>
+                <li ng-class="{active : panel.isTabSelected(4)}"><a ui-sref="usersList" ng-click="panel.setTab(4)">Users</a></li>
             </ul>
             </section>
         </div>
         <div class="col-md-10">
-            <div ng-view></div>
+            <!--<div ng-view></div>-->
+            <div ui-view></div>
         </div>
         <div class="clearfix visible-lg"></div>
     </div>

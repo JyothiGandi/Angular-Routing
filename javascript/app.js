@@ -2,7 +2,7 @@
  * Created by jgandi on 16/5/16.
  */
 
-angular.module('goldmining',['ngRoute','Equipment','Material','Location','User'])
+angular.module('goldmining',[/*'ngRoute',*/'ui.router','Equipment','Material','Location','User'])
 
     .controller('PanelController', function (){
         this.tab = 1;

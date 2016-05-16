@@ -11,8 +11,8 @@
 
             <ul class="equipments">
                 <li ng-repeat="equipment in equipments" class="thumbnail">
-                    <a href="#/equipments/{{equipment.id}}" class="thumb"><img ng-src="{{equipment.imageUrl}}"></a>
-                    <a href="#/equipments/{{equipment.id}}">{{equipment.name}}</a>
+                    <a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })" class="thumb"><img ng-src="{{equipment.imageUrl}}"></a>
+                    <a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })">{{equipment.name}}</a>
                     <p>{{equipment.snippet}}</p>
                 </li>
             </ul>

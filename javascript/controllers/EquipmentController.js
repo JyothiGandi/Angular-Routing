@@ -26,6 +26,6 @@ angular.module('Equipment',[])
         ];
     }/*]*/)
 
-.controller('EquipmentDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-            $scope.equipmentId = $routeParams.equipmentId;
+.controller('EquipmentDetailCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+            $scope.equipmentId = $stateParams.equipmentId;
     }])

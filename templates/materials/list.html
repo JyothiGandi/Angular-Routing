@@ -11,8 +11,8 @@
 
             <ul class="materials">
                 <li ng-repeat="material in materials" class="thumbnail">
-                    <a href="#/materials/{{material.id}}" class="thumb"><img ng-src="{{material.imageUrl}}"></a>
-                    <a href="#/materials/{{material.id}}">{{material.name}}</a>
+                    <a ui-sref="materialsDetails({ materialId: {{material.id}} })" class="thumb"><img ng-src="{{material.imageUrl}}"></a>
+                    <a ui-sref="materialsDetails({ materialId: {{material.id}} })">{{material.name}}</a>
                     <p>{{material.snippet}}</p>
                 </li>
             </ul>
