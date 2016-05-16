@@ -1,0 +1,19 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>List of users</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!--Body content-->
+            <ul>
+                <li ng-repeat="user in userCtrl.users">
+                    <p>{{user.name}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
