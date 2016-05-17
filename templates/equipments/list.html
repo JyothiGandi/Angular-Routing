@@ -1,22 +1,47 @@
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <h4>List of equipments</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!--Body content-->
 
-            <ul class="equipments">
-                <li ng-repeat="equipment in equipments" class="thumbnail">
-                    <a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })" class="thumb"><img ng-src="{{equipment.imageUrl}}"></a>
-                    <a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })">{{equipment.name}}</a>
-                    <p>{{equipment.snippet}}</p>
-                </li>
-            </ul>
-
+    <div class="row">
+        <div class="col-md-8">
+            <input class="form-control" placeholder="Search" ng-model="searchKeyword"></div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default btn-sm" ng-click="equipmentModal(equipments,-1)"><span class="glyphicon glyphicon-plus">ADD</span></button>
         </div>
-    </div>
+    </div><br>
+
+
+    <table class="table table-hover">
+        <tbody>
+        <tr ng-repeat="equipment in equipments | filter: searchKeyword">
+           <!-- <th scope="row">1</th>-->
+            <td><a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })">{{equipment.name}}</a></td>
+            <td>{{equipment.snippet}}</td>
+            <td><button type="button" class="btn btn-default btn-sm" ng-click="equipmentModal(equipments,equipments.indexOf(equipment))">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </button></td>
+            <td><button type="button" class="btn btn-default btn-sm" ng-click="deleteEquipment(equipments,equipments.indexOf(equipment))">
+                <span class="glyphicon glyphicon-trash"></span> Trash
+            </button></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Modal -->
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <input type="text" ng-model="myequipment.editName">
+            <input type="text" ng-model="myequipment.editSnippet">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <!-- End Modal -->
+
+    <!--</div>-->
 </div>

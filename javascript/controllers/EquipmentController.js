@@ -2,10 +2,12 @@
  * Created by jgandi on 16/5/16.
  */
 
-angular.module('Equipment',[])
 
-.controller('EquipmentListCtrl',/*['$scope','$http',*/function($scope, $http){
-        $scope.equipments = [
+
+angular.module('Equipment',['ui.bootstrap'])
+
+    .controller('EquipmentListCtrl',['$scope','$http','$uibModal',function($scope, $http, $uibModal){
+        var equipments = [
             {
                 id: 1,
                 name: 'truck',
@@ -24,8 +26,46 @@ angular.module('Equipment',[])
             }
 
         ];
-    }/*]*/)
+        $scope.equipments = equipments;
+        $scope.deleteEquipment = function(equipments,deleteIndex){
+            console.log('delete',equipments[deleteIndex]);
+            equipments.splice(deleteIndex,1);
+        };
 
-.controller('EquipmentDetailCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
-            $scope.equipmentId = $stateParams.equipmentId;
+        $scope.equipmentModal = function(equipments,index){
+            var modalInstance = $uibModal.open({
+                templateUrl: 'myModalContent.html',
+                controller: ['$scope', function ($scope) {
+                    $scope.myequipment = {
+                        editName: (index == -1) ? '' : equipments[index].name,
+                        editSnippet: (index == -1) ? '' : equipments[index].snippet
+                    };
+
+                    $scope.ok = function () {
+
+                        var equipment = {
+                            name : $scope.myequipment.editName,
+                            snippet : $scope.myequipment.editSnippet,
+                            id : 5
+                        };
+
+                        if(index == -1) equipments.push(equipment);
+                        else equipments[index]=equipment;
+
+                        modalInstance.close();
+                    };
+
+                    $scope.cancel = function () {
+                        console.log('on cancel');
+                        modalInstance.dismiss('cancel');
+                    };
+                }]
+            });
+        };
+
     }])
+
+    .controller('EquipmentDetailCtrl',['$scope','$stateParams',function($scope,$stateParams){
+        $scope.equipmentId = $stateParams.equipmentId;
+    }])
+
