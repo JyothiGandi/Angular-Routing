@@ -36,6 +36,7 @@ angular.module('Equipment',['ui.bootstrap'])
             var modalInstance = $uibModal.open({
                 templateUrl: 'myModalContent.html',
                 controller: ['$scope', function ($scope) {
+                    $scope.typeOfOperation = (index == -1) ? 'Add equipment' : 'Edit equipment';
                     $scope.myequipment = {
                         editName: (index == -1) ? '' : equipments[index].name,
                         editSnippet: (index == -1) ? '' : equipments[index].snippet

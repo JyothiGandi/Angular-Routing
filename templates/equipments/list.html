@@ -2,7 +2,10 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-2">
+            <input class="form-control" placeholder="Limit to" ng-model="limitNumber">
+        </div>
+        <div class="col-md-6">
             <input class="form-control" placeholder="Search" ng-model="searchKeyword"></div>
         <div class="col-md-4">
             <button type="button" class="btn btn-default btn-sm" ng-click="equipmentModal(equipments,-1)"><span class="glyphicon glyphicon-plus">ADD</span></button>
@@ -12,7 +15,7 @@
 
     <table class="table table-hover">
         <tbody>
-        <tr ng-repeat="equipment in equipments | filter: searchKeyword">
+        <tr ng-repeat="equipment in equipments | filter: searchKeyword | limitTo: limitNumber">
            <!-- <th scope="row">1</th>-->
             <td><a ui-sref="equipmentDetails({'equipmentId' : {{equipment.id}} })">{{equipment.name}}</a></td>
             <td>{{equipment.snippet}}</td>
@@ -29,6 +32,13 @@
 
     <!-- Modal -->
     <script type="text/ng-template" id="myModalContent.html">
+    <my-modal>
+        <input type="text" ng-model="myequipment.editName" placeholder="Equipment name">
+        <input type="text" ng-model="myequipment.editSnippet" placeholder="Equipment snippet">
+    </my-modal>
+    </script>
+
+    <!--<script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title">I'm a modal!</h3>
         </div>
@@ -40,8 +50,8 @@
             <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
-    </script>
+    </script>-->
+
     <!-- End Modal -->
 
-    <!--</div>-->
 </div>
